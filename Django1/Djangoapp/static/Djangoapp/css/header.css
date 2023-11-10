@@ -1,0 +1,25 @@
+.header {
+    padding: 10px 30px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    width: 100px;
+}
+
+.icons-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-container {
+    margin: 0 30px;
+}

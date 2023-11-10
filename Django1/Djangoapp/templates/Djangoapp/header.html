@@ -1,0 +1,33 @@
+ {% load static %}
+   <header class="header">
+        <div class="header-content">
+            <img class="header-logo" src="{% static 'Djangoapp/img/Logo-fotor-bg-remover-20231010155255.png' %}"
+                 alt="Лого">
+            <div class="icons-block">
+                <a class="icon-container" title="Главная" href="{% url 'nachal' %}">
+                    <img src="{% static 'Djangoapp/icons/home.svg' %}">
+                </a>
+                <a class="icon-container" title="Лекции" href="{% url 'about' %}">
+                    <img src="{% static 'Djangoapp/icons/book.svg' %}">
+                </a>
+                <a class="icon-container" title="Чаты" href="{% url 'chats' %}">
+                    <img src="{% static 'Djangoapp/icons/chat.svg' %}">
+                </a>
+                <a class="icon-container" title="Расписание" href="{% url 'contacts' %}">
+                    <img src="{% static 'Djangoapp/icons/calendar.svg' %}">
+                </a>
+                <a class="icon-container" title="Контакты" href="{% url 'info' %}">
+                    <img src="{% static 'Djangoapp/icons/contact.svg' %}">
+                </a>
+
+            </div>
+            <div class="icons-block">
+                <a class="icon-container" title="Выход" href="{% url 'home' %}">
+                    <img src="{% static 'Djangoapp/icons/exit.svg' %}">
+                </a>
+                <a class="icon-container" title="Профиль" href="{% url 'profile' %}">
+                    <img src="{% static 'Djangoapp/icons/user.svg' %}">
+                </a>
+            </div>
+        </div>
+    </header>

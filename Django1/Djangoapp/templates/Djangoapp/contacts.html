@@ -1,0 +1,73 @@
+{% extends 'Djangoapp/layout.html' %}
+
+{% block title %}Расписание{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+<h1 class="text-center py-3">Расписание</h1>
+<table class="table table-striped">
+<thead class="table-purple">
+<tr>
+<th scope="col">Time</th>
+<th scope="col">8:30-9:30</th>
+<th scope="col">9:30-10:30</th>
+<th scope="col">10:3-11:30</th>
+<th scope="col">11:30-12:30</th>
+<th scope="col">12:30-1:30</th>
+<th scope="col">1:30-2:00</th>
+<th scope="col">3:00-3:30</th>
+<th scope="col">3:00-4:00</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Monday</th>
+<td>English</td>
+<td>Physics</td>
+<td>Maths</td>
+<td>Tamil</td>
+<td rowspan="5" style="text-aligh:center">L<br>U<br>N<br>C<br>H</td>
+<td>Computer</td>
+<td>Chemistry</td>
+<td>Social</td>
+</tr>
+<tr>
+<th scope="row">Tuesday</th>
+<td>English</td>
+<td>Physics</td>
+<td>Maths</td>
+<td>Tamil</td>
+<td>Computer</td>
+<td>Chemistry</td>
+<td>Social</td>
+</tr>
+<tr>
+<th scope="row">Wesnesday</th>
+<td>English</td>
+<td>Physics</td>
+<td>Maths</td>
+<td>Tamil</td>
+<td colspan="3">Computer Lab</td>
+</tr>
+<tr>
+<th scope="row">Thursday</th>
+<td>English</td>
+<td>Physics</td>
+<td>Maths</td>
+<td>Tamil</td>
+<td>Computer</td>
+<td>Chemistry</td>
+<td>Social</td>
+</tr>
+<tr>
+<th scope="row">Friday</th>
+<td colspan="3">Science Lab</td>
+<td>English</td>
+<td>Computer</td>
+<td>Chemistry</td>
+<td>Social</td>
+</tr>
+</tbody>
+</table>
+</div>
+{% endblock %}

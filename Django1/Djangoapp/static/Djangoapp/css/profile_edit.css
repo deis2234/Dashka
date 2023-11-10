@@ -1,0 +1,141 @@
+:root {
+    --profile-edit-content-block-gap: 100px
+}
+
+input[type="submit"] {
+    color: #414141;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 8px 28px;
+}
+
+.profile-edit-content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.flex-container {
+    justify-content: space-around !important;
+    width: calc(100% + 30px) !important;
+    margin-top: 50px;
+}
+
+.profile-edit-title {
+    font-family: "Rubik", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2;
+    text-align: center;
+}
+
+.edit-form {
+}
+
+.profile-edit-content-block {
+    width: 100%;
+    display: flex;
+    gap: var(--profile-edit-content-block-gap);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-edit-input-block {
+    width: calc((100% - var(--profile-edit-content-block-gap)) / 2);
+    color: #8F8F8F;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.profile-edit-input-block > label {
+    line-height: 1.5;
+}
+
+.profile-edit-input-block > input {
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 24px;
+    border: 1px solid #BFBFBF;
+    outline: 1px solid #BFBFBF;
+    border-radius: 5px;
+}
+
+.profile-edit-input-block > .password > input {
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 24px;
+    border: 1px solid #BFBFBF;
+    outline: 1px solid #BFBFBF;
+    border-radius: 5px;
+    padding-right: 0;
+}
+
+.password {
+	position: relative;
+}
+.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.form_radio_group {
+	display: inline-block;
+	overflow: hidden;
+    width: 100% !important;
+}
+.form_radio_group-item {
+	display: inline-block;
+	float: left;
+    width: 50%;
+}
+.form_radio_group input[type=radio] {
+	display: none;
+}
+.form_radio_group label {
+	display: inline-block;
+	cursor: pointer;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-right: none;
+	user-select: none;
+    width: calc(100% - 2px);
+    text-align: center;
+}
+
+.form_radio_group .form_radio_group-item:first-child label {
+	border-radius: 6px 0 0 6px;
+}
+.form_radio_group .form_radio_group-item:last-child label {
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #999;
+}
+
+/* Checked */
+.form_radio_group input[type=radio]:checked + label {
+	background: #ffffff;
+    color: #414141;
+}
+
+/* Hover */
+.form_radio_group label:hover {
+	background: rgba(239, 239, 239, 0.5);
+    color: #414141;
+}
+
+/* Disabled */
+.form_radio_group input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}

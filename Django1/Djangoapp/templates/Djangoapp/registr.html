@@ -1,0 +1,128 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}Регистрация{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/registr.css' %}">
+{% endblock %}
+
+{% block bok %}{% endblock %}
+
+{% block content %}
+    <div class="registr-content">
+        <div class="empty"></div>
+        <div class="registr-container">
+            <div class="registr-title">
+                Регистрация
+            </div>
+            <form action="{% url 'registr' %}" method="POST" class="edit-form">
+                <div class="registr-content-block">
+                    <div class="registr-input-block">
+                        <label for="last_name">Фамилия</label>
+                        <input id="last_name" type="text" name="last_name"/>
+                    </div>
+                    <div class="registr-input-block">
+                        <label for="birthdate">Дата рождения</label>
+                        <input id="birthdate" type="date" name="birthdate"/>
+                    </div>
+                </div>
+                <div class="registr-content-block">
+                    <div class="registr-input-block">
+                        <label for="first_name">Имя</label>
+                        <input id="first_name" type="text" name="first_name"/>
+                    </div>
+                    <div class="registr-input-block" id="group-input-block">
+                        <label for="group">Номер группы</label>
+                        <input id="group" type="text" name="group"/>
+                    </div>
+                </div>
+                <div class="registr-content-block">
+                    <div class="registr-input-block">
+                        <label for="middle_name">Отчество</label>
+                        <input id="middle_name" type="text" name="middle_name"/>
+                    </div>
+                    <div class="registr-input-block">
+
+                        <div class="form_radio_group">
+                            <div class="form_radio_btn">
+                                <input id="gender-1" type="radio" name="gender" value="1" checked>
+                                <label for="gender-1">Мужской</label>
+                            </div>
+
+                            <div class="form_radio_btn">
+                                <input id="gender-2" type="radio" name="gender" value="2">
+                                <label for="gender-2">Женский</label>
+                            </div>
+                        </div>
+
+                        <div class="form_radio_group">
+                            <div class="form_radio_btn">
+                                <input id="role-1" type="radio" name="role" value="1" checked>
+                                <label for="role-1">Студент</label>
+                            </div>
+
+                            <div class="form_radio_btn">
+                                <input id="role-2" type="radio" name="role" value="2">
+                                <label for="role-2">Преподаватель</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="registr-content-block">
+                    <div class="registr-input-block">
+                        <label for="password">Пароль</label>
+                        <div class="password">
+                            <input autocomplete="new-password" id="password" type="password" name="password"/>
+                            <img
+                                    src="{% static 'Djangoapp/icons/eye-off.svg' %}"
+                                    class="password-control"
+                                    onclick="return show_hide_password(this, 'password');"/>
+                        </div>
+                    </div>
+                    <div class="empty"></div>
+                </div>
+                <div class="registr-content-block">
+                    <div class="registr-input-block">
+                        <label for="password_repeat">Повторите пароль</label>
+
+                        <div class="password">
+                            <input id="password_repeat" type="password" name="password_repeat"/>
+                            <img
+                                    src="{% static 'Djangoapp/icons/eye-off.svg' %}"
+                                    class="password-control"
+                                    onclick="return show_hide_password(this, 'password_repeat');"/>
+                        </div>
+                    </div>
+                    <div class="empty"></div>
+                </div>
+                <div class="registr-content-block">
+                    <div class="empty"></div>
+
+
+                </div>
+                <div class="registr-content-block flex-container">
+                    <input type="submit" value="Вход">
+                </div>
+            </form>
+        </div>
+        <div class="empty"></div>
+    </div>
+    <script>
+        function show_hide_password(target, id) {
+            var input = document.getElementById(id);
+            if (input.getAttribute('type') === 'password') {
+                input.setAttribute('type', 'text');
+            } else {
+                input.setAttribute('type', 'password');
+            }
+            return false;
+        }
+
+        document.querySelector('#role-2').addEventListener('change', (e) => {
+            document.querySelector('#group-input-block').style.display = 'none';
+        });
+        document.querySelector('#role-1').addEventListener('change', (e) => {
+            document.querySelector('#group-input-block').style.display = 'block';
+        });
+    </script>
+{% endblock %}

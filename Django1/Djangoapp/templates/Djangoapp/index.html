@@ -1,0 +1,36 @@
+{% extends 'Djangoapp/layout.html' %}
+{% block bok %}{% endblock %}
+{% load static %}
+{% block title %}SmartStudy{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'Djangoapp/css/index.css' %}">
+{% endblock %}
+{% block content %}
+<div
+        class="root"
+        style="background: url({% static 'Djangoapp/img/background.png' %})"
+>
+    <div class="root-container">
+        <img class="root-logo" src="{% static 'Djangoapp/img/Logo-fotor-bg-remover-20231010155255.png' %}" alt="Лого">
+        <form class="root-form">
+            <div class="root-form-input">
+                <input placeholder="Логин" type="email" class="form-control" id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
+            </div>
+
+            <div class="root-form-input">
+                <input placeholder="Пароль" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="root-btn-group">
+                <button class="root-btn btn-info"><a href="{% url 'nachal' %}">Войти как преподаватель</a></button>
+            </div>
+
+            <div class="root-btn-group">
+                <button class="root-btn btn-info"><a href="{% url 'nachal' %}">Войти как студент</a></button>
+                <button class="root-btn btn-info"><a href="{% url 'registr' %}">Регистрация</a></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
