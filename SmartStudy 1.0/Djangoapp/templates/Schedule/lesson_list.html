@@ -1,0 +1,49 @@
+<!-- schedule/templates/schedule/lesson_list.html -->
+{% extends 'Djangoapp/layout.html' %}
+
+{% block title %}Lesson List{% endblock %}
+
+{% block header %}Schedule{% endblock %}
+
+{% block content %}
+  <h2>Lesson List</h2>
+
+  {% if days %}
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Time</th>
+          {% for day in days %}
+            <th>{{ day.name }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in table_data %}
+          <tr>
+            <td>{{ row.time }}</td>
+            {% for cell in row.lessons %}
+              <td>
+                {% for lesson in cell.lessons %}
+                  <div>
+                    <strong>Subject:</strong> {{ lesson.subject }}<br>
+                    <strong>Location:</strong> {{ lesson.location }}<br>
+                    <strong>Day:</strong> {{ lesson.day.name }}<br>
+                    <strong>Time:</strong> {{ lesson.get_time_lowercase }}<br>
+                    {% if lesson.link %}
+                      <a href="{{ lesson.link }}" target="_blank">Join the lesson</a><br>
+                    {% else %}
+                      No link provided.
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No days found.</p>
+  {% endif %}
+{% endblock %}

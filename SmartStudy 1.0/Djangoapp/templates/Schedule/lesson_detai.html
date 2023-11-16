@@ -1,0 +1,18 @@
+
+{% extends 'Djangoapp/layout.html' %}
+
+{% block title %}Lesson Detail{% endblock %}
+
+{% block header %}Lesson Detail{% endblock %}
+
+{% block content %}
+  <h2>{{ lesson.subject }} at {{ lesson.get_time_lowercase }}</h2>
+  <p><strong>Location:</strong> {{ lesson.location }}</p>
+  <p><strong>Day:</strong> {{ lesson.day.name }}</p>
+  {% if lesson.link %}
+    <p><a href="{{ lesson.link }}" target="_blank">Join the lesson</a></p>
+  {% else %}
+    <p>No link provided.</p>
+  {% endif %}
+  <a href="{% url 'lesson_list' %}">Back to Lesson List</a>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}SmartStudy{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/profile.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="profile-content" style="background-image: url('{% static 'Djangoapp/img/background.png' %}">
+        <div class="profile-content-block">
+            <div class="profile-photo-block">
+                <div class="profile-photo-block-img-container">
+                    <img src="https://24.kz/media/k2/items/cache/0ea7761dbc0f461ae2d999718aae8816_XL.jpg"
+                         alt="user_photo">
+
+                </div>
+                <button class="profile-photo-block-edit-container">
+                    <img src="{% static 'Djangoapp/icons/pen.svg' %}" alt="" class="edit-profile-pen">
+                </button>
+            </div>
+        </div>
+        <div class="profile-content-block">
+            <div class="profile-info-block">
+                <h3 class="profile-info-block-title">
+                    Основные данные
+                </h3>
+                <div class="profile-info-data-block">
+                    <div class="profile-info-data-block-text">
+                        {{ user.surname }}
+                    </div>
+                    <div class="profile-info-data-block-text">
+                        {{ user.name }}
+                    </div>
+                </div>
+                <div class="profile-info-data-block">
+                    <div class="profile-info-data-block-text">
+                        {{ user.middlename }}
+                    </div>
+                    <div class="profile-info-data-block-text">
+                        Дата рождения: {{ user.birthday }}
+                    </div>
+                </div>
+                <div class="profile-info-data-block align-center">
+    <div class="profile-info-data-block-text">
+        Группы:
+        {% for group in user.groups.all %}
+            {{ group.name }}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </div>
+</div>
+                <div class="profile-info-data-block">
+    <div class="profile-info-data-block-text custom-check">
+        <span {% if user.user_type == 'T' %}class="active"{% endif %}>
+            <span></span>
+        </span>
+        Преподаватель
+    </div>
+    <div class="profile-info-data-block-text custom-check">
+        <span {% if user.user_type == 'S' %}class="active"{% endif %}>
+            <span></span>
+        </span>
+        Студент
+    </div>
+</div>
+                <div class="profile-info-data-block flex-end">
+                    <a href="{% url 'profile-edit' %}" class="profile-edit-link">
+                        Редактировать
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

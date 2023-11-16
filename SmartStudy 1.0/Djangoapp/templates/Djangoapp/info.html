@@ -1,0 +1,59 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}SmartStudy{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/info.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="info-container" style="background-image: url('{% static 'Djangoapp/img/background.png' %}">
+        <div class="info-container-block">
+            <div class="left-side">
+                <h1 class="info-title">Свяжитесь с нами</h1>
+                <img class="info-logo" src="{% static 'Djangoapp/img/logo_mini.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="info-container-block right-side">
+            <div class="right-side-block">
+                <div class="title">
+                    ПОЗВОНИ НАМ
+                </div>
+                <div class="content">
+                    <p class="content-text">+7 (800) 535-35-35</p>
+                    <p class="content-text">+7 (954) 638-54-71</p>
+                </div>
+            </div>
+            <div class="right-side-block">
+                <div class="title">
+                    СОЦИАЛЬНЫЕ СЕТИ
+                </div>
+                <div class="content info-icons-container">
+                    <a href="https://vk.com/dasha.boronilova" class="icon" title="VK">
+                        <img src="{% static 'Djangoapp/icons/vkontakte.svg' %}" alt="" class="icon-img">
+                    </a>
+                    <a href="https://wa.me/qr/F6VMKPHO6G4HB1" class="icon" title="WhatsApp">
+                        <img src="{% static 'Djangoapp/icons/whatsapp.svg' %}" alt="" class="icon-img">
+                    </a>
+                    <a href="https://t.me/dasha_boronilova_2416" class="icon" title="Telegram">
+                        <img src="{% static 'Djangoapp/icons/telegram.svg' %}" alt="" class="icon-img">
+                    </a>
+                </div>
+            </div>
+            <div class="right-side-block">
+                <div class="title">
+                    РАСПОЛОЖЕНИЕ
+                </div>
+                <div class="content">
+                    <p class="address-text">
+                        Казань
+                    </p>
+                    <p class="address-text">
+                        Ул.Маяковского <span>20</span>
+                    </p>
+                    <p class="address-text">
+                        <span>420012</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

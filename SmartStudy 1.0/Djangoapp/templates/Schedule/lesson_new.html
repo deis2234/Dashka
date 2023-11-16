@@ -1,0 +1,16 @@
+<!-- schedule/templates/schedule/lesson_edit.html -->
+{% extends 'Djangoapp/layout.html' %}
+
+{% block title %}New Lesson{% endblock %}
+
+{% block header %}New Lesson{% endblock %}
+
+{% block content %}
+  <h2>New Lesson</h2>
+  <form method="post" class="lesson-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create lesson</button>
+  </form>
+  <a href="{% url 'lesson_list' %}">Cancel</a>
+{% endblock %}

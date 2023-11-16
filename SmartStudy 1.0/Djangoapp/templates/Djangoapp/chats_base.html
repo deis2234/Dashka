@@ -1,0 +1,103 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}SmartStudy{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'Djangoapp/css/chats.css' %}">
+{% endblock %}
+{% block content %}
+<div class="chats-container" style="background-image: url('{% static 'Djangoapp/img/background.png' %}">
+    <div class="chats-blocks">
+        <div class="chats-block">
+            <h1 class="chats-list-title">{%block chats-list-title%}{% endblock %}</h1>
+            <div class="chats-list" id="chats-list">
+                {% block chat-cards %}
+                <button class="chat-card active">
+                    Интернет-технологии
+                </button>
+                <button class="chat-card">
+                    ПОЭИС
+                </button>
+                <button class="chat-card">
+                    ПЭП
+                </button>
+                <button class="chat-card">
+                    УИП
+                </button>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="chats-block chats-block-right-side">
+            <div class="chats-block-right-side-block ">
+                <div class="messages-container">
+                    <div class="message">
+                        <div class="sender-avatar">
+                            .<img src="{% static 'Djangoapp/icons/mat-avatar.svg' %}">
+                        </div>
+                        <div class="message-content">
+                            Здравствуйте, скажите пожалуйста будет ли у нас пара в этот четверг в 12.00
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="sender-avatar">
+                            .<img src="{% static 'Djangoapp/icons/mat-avatar.svg' %}">
+                        </div>
+                        <div class="message-content">
+                            Здравствуйте, пары к сожалению не будет в четверг, но она переноситься на понедельник в
+                            14.20
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="sender-avatar">
+                            .<img src="{% static 'Djangoapp/icons/mat-avatar.svg' %}">
+                        </div>
+                        <div class="message-content">
+                            Здравствуйте, скажите пожалуйста будет ли у нас пара в этот четверг в 12.00
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chats-block-right-side-block message-input-block">
+                <input placeholder="Сообщение" type="text" class="messgae-input"/>
+                <button class="media-btn">
+                    <img src="{% static 'Djangoapp/icons/media.svg' %}" alt="" class="media-btn-img">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function chatBtnClick(e) {
+        document.querySelectorAll('.chat-card').forEach((element) => {
+            element.classList.remove("pressed");
+        });
+        e.currentTarget.classList.add("pressed");
+    }
+
+    function ready() {
+        document.querySelectorAll('.chat-card').forEach((element) => {
+            element.classList.remove("pressed");
+            element.addEventListener("click", chatBtnClick, false);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", ready)
+
+    let acc = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            let panel = this.nextElementSibling;
+            if (panel.style.display === "flex") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "flex";
+            }
+        });
+    }
+
+
+</script>
+{% endblock %}
