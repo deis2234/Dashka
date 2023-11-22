@@ -9,6 +9,9 @@ from users.forms import CustomUserEditForm
 from users.models import Lesson, Day, WeeklySchedule
 from django.shortcuts import render, get_object_or_404, redirect
 from users.forms import LessonForm
+from django.shortcuts import render, redirect
+from users.forms import CustomUserChangeForm
+
 
 # Create your views here.
 def index(request):
@@ -25,7 +28,7 @@ def news(request, news_id):
 
 
 def contacts(request):
-    return render(request, 'Djangoapp/contacts.html')
+    return render(request, 'Djangoapp/schedule.html')
 
 
 def nachal(request):
@@ -80,15 +83,18 @@ def custom_login(request):
 
     return render(request, 'registration/login.html', {'form': form})
 
+
 def profile_view(request):
     user = CustomUser.objects.get(pk=request.user.pk)
     context = {'user': user}
     return render(request, 'users/signup.html', context)
 
+
 def profile(request):
     user = request.user
     form = CustomUserEditForm(instance=user)
     return render(request, 'Djangoapp/profile.html', {'user': user, 'form': form})
+
 
 def lesson_list(request):
     days = Day.objects.all()
@@ -117,9 +123,12 @@ def lesson_list(request):
     }
 
     return render(request, 'schedule/lesson_list.html', context)
+
+
 def lesson_detail(request, pk):
     lesson = get_object_or_404(Lesson, pk=pk)
     return render(request, 'schedule/lesson_detail.html', {'lesson': lesson})
+
 
 def lesson_new(request):
     if request.method == "POST":
@@ -131,6 +140,7 @@ def lesson_new(request):
         form = LessonForm()
     return render(request, 'schedule/lesson_edit.html', {'form': form})
 
+
 def lesson_edit(request, pk):
     lesson = get_object_or_404(Lesson, pk=pk)
     if request.method == "POST":
@@ -141,3 +151,21 @@ def lesson_edit(request, pk):
     else:
         form = LessonForm(instance=lesson)
     return render(request, 'schedule/lesson_edit.html', {'form': form})
+
+
+def profile_edition(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+
+    return render(request, 'Djangoapp/profile_edit.html', {'form': form})
+
+
+def your_view(request):
+    form = CustomUserChangeForm(initial={'birthdate': request.user.birthday})
+
+    return render(request, 'profile_edit.html', {'form': form})

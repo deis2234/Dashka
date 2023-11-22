@@ -15,15 +15,12 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('surname', 'name', 'middlename', 'phone_number', 'email', 'gender', 'user_type','birthday')
+        fields = ('surname', 'name', 'middlename', 'phone_number','gender', 'user_type','birthday')
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
-
-from django import forms
-from .models import CustomUser
+        fields = ('surname', 'name', 'middlename', 'gender', 'birthday', 'groups')
 
 class CustomUserEditForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(
