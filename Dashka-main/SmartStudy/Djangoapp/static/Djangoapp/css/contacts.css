@@ -1,0 +1,111 @@
+input[type="datetime-local"] {
+    padding: 10px 1rem;
+    border-radius: 10px;
+}
+
+.lectures-content {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.lectures-controllers {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trimester-controllers {
+    display: inline-flex;
+    gap: 1rem;
+}
+
+.trimester-link {
+    display: block;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333;
+    font-weight: bold;
+}
+
+.lectures-days-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 4rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 80%;
+}
+
+.lectures-days-list::-webkit-scrollbar {
+  width: 6px;               /* width of the entire scrollbar */
+}
+
+.lectures-days-list::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.lectures-days-list::-webkit-scrollbar-thumb {
+  background-color: #0067ce;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: none;  /* creates padding around scroll thumb */
+}
+
+.day-lectures-component {
+    width: 100%;
+}
+
+.day-lectures-component-title {
+    text-align: center;
+    color: #8B0000;
+}
+
+.lectures-list {
+    width: 100%;
+}
+
+.lecture {
+    background-color: #FB8C00;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 0;
+    height: fit-content;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.lecture > span {
+    margin-left: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 1200px)  {
+    .lectures-days-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px)  {
+    .lectures-days-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lectures-controllers {
+        display: block;
+    }
+
+    .trimester-controllers  {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 720px)  {
+    .lectures-days-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

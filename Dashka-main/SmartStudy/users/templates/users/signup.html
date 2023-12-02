@@ -1,0 +1,118 @@
+{%extends 'Djangoapp/layout.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'phonenumber_field/phonenumber.css' %}">
+<script type="text/javascript" src="{% static 'phonenumber_field/phonenumber.js' %}"></script>
+
+{% block style %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'phonenumber_field/phonenumber.css' %}">
+<script type="text/javascript" src="{% static 'phonenumber_field/phonenumber.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/registr.css' %}">
+{% endblock %}
+
+{% block title %}Авторизация{% endblock %}
+
+
+{% block content %}
+<div class="registr-content">
+    <div class="empty"></div>
+    <div class="registr-container">
+        <div class="registr-title">Регистрация</div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <label>
+            <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
+            <div class="alert error">
+                <span class="alertClose">X</span>
+                <span class="alertText">{{message}}
+            <br class="clear"/></span>
+            </div>
+        </label>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form class="registr__form" method="post">
+            <div class="registr-form-content">
+                {% csrf_token %}
+                {% for f in form %}
+                {% if f.id_for_label == "id_password1" or f.id_for_label == "id_password2" %}
+                <div class="registr-input-block">
+                    <label for={{f.id_for_label}}>{{f.label}}:</label>
+                    <div class="password">
+                        <input autocomplete="new-password" id={{f.id_for_label}} type="{{f.field.widget.input_type}}"
+                               name={{f.name}}/>
+                        <img
+                                src="{% static 'Djangoapp/icons/eye-off.svg' %}"
+                                class="password-control"
+                                onclick="return show_hide_password(this, '{{f.id_for_label}}');"/>
+                    </div>
+                </div>
+                {% elif f.id_for_label != "id_user_type" and f.id_for_label != "id_gender" %}
+                <div class="registr-input-block">
+                    <label class="label__form" for={{f.id_for_label}}>{{f.label}}:</label>
+                    <input type="{{f.field.widget.input_type}}" id={{f.id_for_label}} name="{{f.name}}"/>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="registr-input-block radio-input-container">
+
+                <div class="form_radio_group">
+                    <div class="form_radio_btn">
+                        <input id="gender-1" type="radio" name="gender" value="M" checked>
+                        <label for="gender-1">Мужской</label>
+                    </div>
+
+                    <div class="form_radio_btn">
+                        <input id="gender-2" type="radio" name="gender" value="F">
+                        <label for="gender-2">Женский</label>
+                    </div>
+                </div>
+
+                <div class="form_radio_group">
+                    <div class="form_radio_btn">
+                        <input id="role-1" type="radio" name="user_type" value="S" checked>
+                        <label for="role-1">Студент</label>
+                    </div>
+
+                    <div class="form_radio_btn">
+                        <input id="role-2" type="radio" name="user_type" value="T">
+                        <label for="role-2">Преподаватель</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="registration__button">
+                <input class="button__form" value="Вход" type="submit"/>
+            </div>
+
+        </form>
+        <div class="registration__button registration">
+            <p>
+                <span class="registration__label">У вас уже есть аккаунт?</span>
+                <a href="{% url 'login' %}" class="registartion__link">Войти</a>
+            </p>
+        </div>
+    </div>
+    <div class="empty"></div>
+</div>
+
+<script>
+    function show_hide_password(target, id) {
+        var input = document.getElementById(id);
+        if (input.getAttribute('type') === 'password') {
+            input.setAttribute('type', 'text');
+        } else {
+            input.setAttribute('type', 'password');
+        }
+        return false;
+    }
+</script>
+{% endblock %}
+
+{% block footer %}
+{% include 'RealEstateApp/footer.html' %}
+{% endblock %}

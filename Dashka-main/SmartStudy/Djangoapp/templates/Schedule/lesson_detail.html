@@ -1,0 +1,34 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+
+{% block title %}Lesson Detail{% endblock %}
+
+{% block header %}Lesson Detail{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/lession_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="lession_content">
+        <div class="lession_short_card">
+            <span>{{ lesson.time }}</span>
+            {{ lesson.get_abbreviation }}
+        </div>
+        <div class="lession_card">
+            <h2>{{ lesson.subject }} </h2>
+            <p>Дата и время проведения: <span>{{ lesson.time }}</span></p>
+            <p>Ссылка: <a href="{{ lesson.link }}">{{ lesson.link }}</a></p>
+        </div>
+        <a class="back_to_list" href="{% url 'lesson_list' %}">Вернуться к расписанию</a>
+    </div>
+    {#  <h2>{{ lesson.subject }} at {{ lesson.get_time_lowercase }}</h2>#}
+    {#  <p><strong>Location:</strong> {{ lesson.location }}</p>#}
+    {#  <p><strong>Day:</strong> {{ lesson.day.name }}</p>#}
+    {#  {% if lesson.link %}#}
+    {#    <p><a href="{{ lesson.link }}" target="_blank">Join the lesson</a></p>#}
+    {#  {% else %}#}
+    {#    <p>No link provided.</p>#}
+    {#  {% endif %}#}
+    {#  <a href="{% url 'lesson_list' %}">Back to Lesson List</a>#}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}Lesson List{% endblock %}
+
+{% block header %}Schedule{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="lectures-content">
+        <div class="lectures-controllers">
+            <div class="trimester-controllers">
+                <a class="trimester-link" href="#">1 Триместр</a>
+                <a class="trimester-link" href="#">2 Триместр</a>
+                <a class="trimester-link" href="#">3 Триместр</a>
+            </div>
+            <div class="date-controller">
+                <input type="datetime-local">
+            </div>
+        </div>
+
+        <div class="lectures-days-list">
+            {% for item in data.schedule %}
+                <div class="day-lectures-component">
+                    <p class="day-lectures-component-title">{{ item.day.name }}</p>
+                    <div class="lectures-list">
+                        {% for lesson in item.lessons %}
+                            <a class="lesson-link" href="/lesson/{{ lesson.pk }}/">
+                                <div class="lecture">
+                                    <span>{{ lesson.time }}</span>
+                                    {{ lesson.get_abbreviation }}
+                                </div>
+                            </a>
+                            {% empty %}
+                            <p style="text-align: center">Занятий нет</p>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

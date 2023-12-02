@@ -1,0 +1,186 @@
+:root {
+    --registr-content-block-gap: 100px
+}
+
+body, main {
+    top: 0 !important;
+    height: 100%;
+}
+
+main {
+    background-image: none !important;
+    background-color: #F5F5F5 !important;
+}
+
+input[type="submit"] {
+    color: #414141;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #58D3F5;
+    border-radius: 5px;
+    padding: 8px 50px;
+}
+
+.registr-content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.flex-container {
+    justify-content: space-around !important;
+    width: calc(100% + 30px) !important;
+    margin-top: 50px;
+}
+
+.registr-title {
+    font-family: "Rubik", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2;
+    text-align: center;
+    color: #414141;
+    margin-top: 30px;
+}
+
+.registr__form {
+
+}
+
+.registr-form-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+}
+
+.registr-content-block {
+    width: 100%;
+    display: flex;
+    gap: var(--registr-content-block-gap);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registr-input-block {
+    /*width: calc((100% - var(--registr-content-block-gap)) / 2);*/
+    width: 90%;
+    color: #8F8F8F;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.registr-input-block > label {
+    line-height: 1.5;
+}
+
+.registr-input-block > input {
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 24px;
+    border: 1px solid #BFBFBF;
+    outline: 1px solid #BFBFBF;
+    border-radius: 5px;
+    caret-color: #58D3F5;
+    color: #414141;
+}
+
+.registr-input-block > input:focus {
+    border: 1px solid #58D3F5;
+    outline: 1px solid #58D3F5;
+}
+
+.registr-input-block > .password > input {
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 24px;
+    border: 1px solid #BFBFBF;
+    outline: 1px solid #BFBFBF;
+    border-radius: 5px;
+    padding-right: 0;
+}
+
+.radio-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password {
+    position: relative;
+}
+
+.password-control {
+    position: absolute;
+    top: 11px;
+    right: 6px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.form_radio_group {
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    width: 50% !important;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 2rem;
+}
+
+.form_radio_btn {
+	display: inline-block;
+    width: 100%;
+}
+.form_radio_btn input[type=radio] {
+	display: none;
+    width: 100%;
+}
+.form_radio_btn label {
+	display: inline-block;
+	cursor: pointer;
+	line-height: 2;
+	border-radius: 6px;
+	user-select: none;
+    text-align: center;
+    width: 100%;
+    padding: 0 0.1rem;
+}
+
+/* Checked */
+.form_radio_btn input[type=radio]:checked + label {
+	background: #58D3F5;
+    color: #fff;
+}
+
+/* Hover */
+.form_radio_btn label:hover {
+	color: #666;
+}
+
+/* Disabled */
+.form_radio_btn input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}
+
+.registration__button {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.registartion__link {
+    text-decoration: none;
+    color: #4ac1f7;
+    font-weight: bold;
+}

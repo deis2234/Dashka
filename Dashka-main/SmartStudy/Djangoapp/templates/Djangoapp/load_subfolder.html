@@ -1,0 +1,13 @@
+{% load static %}
+{% for folder in subfolders %}
+    <div class="explorer-card folder">
+        <img src="{% static 'Djangoapp/icons/folder.svg' %}" alt="folder" href="{{ folder.link }}">
+        <p>{{ folder.name }}</p>
+
+        {% if folder.subfolders.all %}
+            <div class="subfolders">
+                {% include 'Djangoapp/load_subfolder.html' with subfolders=folder.subfolders.all %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}

@@ -1,0 +1,32 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+{% block title %}SmartStudy{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Djangoapp/css/explorer.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="explorer-content" style="background-image: url('{% static 'Djangoapp/img/background.png' %}">
+        <div class="empty"></div>
+        <div class="explorer-container">
+            <div class="explorer-title">
+                {% block explorer-title %}Предметы{% endblock %}
+            </div>
+            <div class="explorer">
+                <a href="{% url 'pi032' %}" class="explorer-card">
+                    <img src="{% static 'Djangoapp/icons/folder.svg' %}" alt="folder">
+                    <p>Пи-032</p>
+                </a>
+                <a href="{% url 'pi022' %}" class="explorer-card">
+                    <img src="{% static 'Djangoapp/icons/folder.svg' %}" alt="folder">
+                    <p>ПИ-022</p>
+                </a>
+                <a href="{% url 'pi012' %}" class="explorer-card">
+                    <img src="{% static 'Djangoapp/icons/folder.svg' %}" alt="folder">
+                    <p>ПИ-012</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="empty"></div>
+    </div>
+{% endblock %}

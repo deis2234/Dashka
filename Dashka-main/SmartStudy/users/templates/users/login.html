@@ -1,0 +1,68 @@
+{% extends 'Djangoapp/layout.html' %}
+{% load static %}
+
+{% block bok %}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'Djangoapp/css/login.css' %}">
+{% endblock %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<div class="authorization__container _container">
+    <img class="authorization__logo" src="{% static 'Djangoapp/img/Logo-fotor-bg-remover-20231010155255.png' %}"
+         alt="Лого">
+    <div class="authorization__form">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form__data">
+                <label for="id_username"></label>
+                <input id="id_username" name="username" type="text" placeholder="Адресс Элетронной Почты">
+            </div>
+
+            <div class="form__data password-input">
+                <label for="id_password"></label>
+                <input id="id_password" name="password" type="password" placeholder="Пароль">
+            </div>
+
+            <div class="root-btn-group">
+                <button class="root-btn btn-info" type="submit">Войти</button>
+                <button class="root-btn btn-info"><a href="{% url 'registrations' %}">Регистрация</a></button>
+            </div>
+
+        </form>
+
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <label>
+            <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
+            <div class="alert error">
+                <span class="alertClose">X</span>
+                <span class="alertText">{{message}}<br class="clear"/></span>
+            </div>
+        </label>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Функция для переключения видимости пароля
+    function togglePasswordVisibility(icon) {
+        var passwordInput = document.getElementById('id_password');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.innerHTML = '<img src="{% static 'Djangoapp/img/eye-off.png' %}?{% now 'U' %}" alt="Скрыть пароль">';
+        } else {
+            passwordInput.type = 'password';
+            icon.innerHTML = '<img src="{% static 'Djangoapp/img/eye.png' %}?{% now 'U' %}" alt="Показать пароль">';
+        }
+    }
+</script>
+
+{% endblock %}
